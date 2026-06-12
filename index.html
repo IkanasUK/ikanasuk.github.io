@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IKANAS UK — PKN STAN Alumni Chapter United Kingdom</title>
+  <meta name="description" content="IKANAS UK is the community of PKN STAN alumni based in the United Kingdom. Registration, arrival guide, and alumni events." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1A3A6B;
+      --blue:   #2256B1;
+      --sky:    #E8F0FB;
+      --gold:   #F5C518;
+      --gold-dk:#C9A200;
+      --white:  #FFFFFF;
+      --ink:    #111827;
+      --muted:  #6B7280;
+      --line:   #E5E9F0;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-mark svg { width: 20px; height: 20px; }
+
+    .nav-brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav-brand-text span:first-child {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-brand-text span:last-child {
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--blue); background: var(--sky); }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      font-weight: 600 !important;
+      padding: 0.4rem 1rem !important;
+      border-radius: 6px;
+      transition: background 0.15s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-dk) !important; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Signature element: a large architectural grid overlay — referencing both the Union Jack geometry and the grid-paper precision of finance/tax work */
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--sky) 1px, transparent 1px),
+        linear-gradient(90deg, var(--sky) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    #home::after {
+      content: '';
+      position: absolute;
+      right: -120px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,86,177,0.12) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--sky);
+      border: 1px solid rgba(34,86,177,0.2);
+      border-radius: 100px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--blue);
+      position: relative;
+    }
+
+    h1 em::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 2px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+      z-index: -1;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .btn-primary:hover { background: var(--blue); transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--white);
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: 1.5px solid var(--line);
+      transition: border-color 0.15s, transform 0.1s;
+    }
+
+    .btn-secondary:hover { border-color: var(--blue); transform: translateY(-1px); }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    section:nth-child(even) { background: var(--sky); }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-body {
+      font-size: 0.975rem;
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      background: var(--white);
+      border: 1.5px solid var(--line);
+      color: var(--navy);
+    }
+
+    /* ── REGISTER ── */
+    .register-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .register-card {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: clamp(2rem, 5vw, 3rem);
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .register-card::before {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(245,197,24,0.12);
+    }
+
+    .register-card-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .register-card-body {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      max-width: 480px;
+    }
+
+    .register-card-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .register-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .register-step-icon {
+      width: 22px;
+      height: 22px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .register-step-icon svg { width: 11px; height: 11px; }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .btn-gold:hover { background: var(--gold-dk); transform: translateY(-1px); }
+
+    /* ── GUIDE ── */
+    .guide-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .guide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .guide-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+      display: block;
+    }
+
+    .guide-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 20px rgba(34,86,177,0.1);
+      transform: translateY(-2px);
+    }
+
+    .guide-card-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--sky);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .guide-card-icon svg { width: 20px; height: 20px; color: var(--blue); }
+
+    .guide-card-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+
+    .guide-card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .guide-card-tag {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--blue);
+      background: var(--sky);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    /* ── EVENTS ── */
+    .events-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .events-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .events-coming {
+      background: var(--white);
+      border: 1.5px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .events-coming-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--sky);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .events-coming-icon svg { width: 26px; height: 26px; color: var(--blue); }
+
+    .events-coming h3 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .events-coming p { font-size: 0.875rem; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-inner .section-body { margin: 0 auto 2rem; }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      background: var(--white);
+    }
+
+    .contact-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 16px rgba(34,86,177,0.1);
+    }
+
+    .contact-card-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--sky);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 64px 0 0 0;
+      background: var(--white);
+      z-index: 99;
+      padding: 1.5rem;
+      flex-direction: column;
+      gap: 0.25rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      display: block;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+
+    .mobile-menu a:hover { background: var(--sky); }
+
+    .mobile-menu-cta {
+      margin-top: 0.5rem;
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      font-weight: 700 !important;
+      text-align: center;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-brand">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 2L3 5v5c0 4.4 2.9 8.1 7 9 4.1-.9 7-4.6 7-9V5L10 2z" fill="#F5C518"/>
+          <path d="M8 10l1.5 1.5L12.5 8" stroke="#1A3A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text">
+        <span>IKANAS UK</span>
+        <span>PKN STAN Alumni · United Kingdom</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#guide">Arrival Guide</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#register" class="nav-cta">Register Now</a></li>
+    </ul>
+
+    <button class="nav-hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#guide" onclick="closeMenu()">Arrival Guide</a>
+    <a href="#events" onclick="closeMenu()">Events</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="#register" class="mobile-menu-cta" onclick="closeMenu()">Register Now</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        PKN STAN Alumni in the United Kingdom
+      </div>
+      <h1>The PKN STAN Alumni<br />Community in<br /><em>the United Kingdom</em></h1>
+      <p class="hero-sub">
+        IKANAS UK brings together PKN STAN alumni studying and working across the UK. 
+        We are here to support your journey.
+      </p>
+      <div class="hero-actions">
+        <a href="#register" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v14M1 8h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Register for Cohort 2026/2027
+        </a>
+        <a href="#guide" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Arrival Guide
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">About Us</p>
+        <h2 class="section-title">One Alma Mater,<br />One Community</h2>
+        <p class="section-body">
+          IKANAS UK is the UK chapter of Ikatan Keluarga Alumni STAN, connecting PKN STAN
+          alumni who are studying, working, or on assignment across the United Kingdom.
+        </p>
+        <p class="section-body" style="margin-top:0.75rem;">
+          We are a space for sharing information, strengthening bonds, and supporting one
+          another through the academic and professional journey abroad.
+        </p>
+        <div class="about-pills" style="margin-top:1.5rem;">
+          <span class="pill">🎓 Scholarship Support</span>
+          <span class="pill">📚 Academic Network</span>
+          <span class="pill">🇬🇧 Professional Life in the UK</span>
+          <span class="pill">🤝 Alumni Gatherings</span>
+        </div>
+      </div>
+      <div>
+        <p class="section-body">
+          Our members are PKN STAN's alumni who are studying or have completed their studies from institutions across the UK.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER -->
+  <section id="register">
+    <div class="register-inner">
+      <p class="section-label">New Admit 2026/2027</p>
+      <h2 class="section-title">Heading to the UK<br />This Year?</h2>
+      <p class="section-body">
+        Register as an IKANAS UK member for the 2026/2027 cohort. We'll connect you
+        with the community before you even land.
+      </p>
+
+      <div class="register-card">
+        <h3 class="register-card-title">New Member Registration</h3>
+        <p class="register-card-body">
+          Fill in the registration form to join IKANAS UK. Your information helps us
+          coordinate the community and get you set up with the arrival guide.
+        </p>
+        <div class="register-card-steps">
+          <div class="register-step">
+            <div class="register-step-icon">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1A3A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            Fill in your details and study information
+          </div>
+          <div class="register-step">
+            <div class="register-step-icon">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1A3A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            The IKANAS UK team will reach out via WhatsApp group
+          </div>
+          <div class="register-step">
+            <div class="register-step-icon">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1A3A6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            Get access to the arrival guide and alumni community
+          </div>
+        </div>
+        <a href="http://s.id/IkanasUKIntake2026" target="_blank" rel="noopener" class="btn-gold">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v14M1 8h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Register via Google Form
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <section id="guide">
+    <div class="guide-inner">
+      <p class="section-label">Arrival Guide</p>
+      <h2 class="section-title">Study in UK Arrival Guide<br />2026/2027</h2>
+      <p class="section-body" style="margin-bottom:2rem;">
+        A comprehensive guide in Bahasa Indonesia covering everything you need to know. 
+        From pre-departure documents to settling in, banking, housing, transport, and beyond.
+      </p>
+      <a href="https://ikanasuk.github.io/arrivalguide" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;">
+        Read the Full Guide →
+      </a>
+      <p style="margin-top:1rem; font-size:0.8rem; color:var(--muted);">Guide page is being set up — link will be live shortly.</p>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events">
+    <div class="events-inner">
+      <div class="events-header">
+        <div>
+          <p class="section-label">Events</p>
+          <h2 class="section-title">IKANAS UK<br />Events & Gatherings</h2>
+        </div>
+        <p class="section-body" style="max-width:300px;">
+          Alumni gatherings, webinars, and community events will be announced here.
+        </p>
+      </div>
+
+      <div class="events-coming">
+        <div class="events-coming-icon">
+          <svg viewBox="0 0 26 26" fill="none"><rect x="3" y="5" width="20" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h20M8 3v4M18 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Events Coming Soon</h3>
+        <p>Follow <strong>@ikanasuk</strong> on Instagram for the latest updates on upcoming events.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-body">
+        Reach out via our Instagram or drop us an email — we'd love to hear from you.
+      </p>
+
+      <div class="contact-links">
+        <a href="https://instagram.com/ikanasuk" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#2256B1" stroke-width="1.8"/><circle cx="12" cy="12" r="5" stroke="#2256B1" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="#2256B1"/></svg>
+          </div>
+          @ikanasuk
+        </a>
+        <a href="mailto:ikanasintheuk@gmail.com" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="#2256B1" stroke-width="1.8"/><path d="M2 8l10 6 10-6" stroke="#2256B1" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          Email Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 IKANAS UK — Ikatan Keluarga Alumni STAN Chapter United Kingdom</p>
+    <p style="margin-top:0.35rem;">Part of <a href="https://ikanas.id" target="_blank" rel="noopener">IKANAS STAN</a></p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.nav-hamburger');
+      if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Scroll-based nav shadow
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('nav');
+      nav.style.boxShadow = window.scrollY > 10 ? '0 2px 16px rgba(0,0,0,0.08)' : 'none';
+    });
+  </script>
+</body>
+</html>
